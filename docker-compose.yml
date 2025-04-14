@@ -1,0 +1,13 @@
+services:
+  mongodb:
+    container_name: obs-demo-db
+    image: mongo:8.0.5
+    restart: always
+    ports:
+      - "8094:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: obs
+    volumes:
+      - ./src/main/resources/db:/docker-entrypoint-initdb.d
