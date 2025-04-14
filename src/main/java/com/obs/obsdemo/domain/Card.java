@@ -14,6 +14,6 @@ public class Card {
     private String cardType;
     @Field("currency_code")
     private String currencyCode;
-    private BigDecimal balance;
+    private String balance;
 
 }
