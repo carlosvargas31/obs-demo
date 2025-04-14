@@ -11,3 +11,16 @@ services:
       MONGO_INITDB_DATABASE: obs
     volumes:
       - ./src/main/resources/db:/docker-entrypoint-initdb.d
+
+  service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: obs-demo-service
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://root:root@mongodb:27017/obs?authSource=admin
